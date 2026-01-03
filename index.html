@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Science Research Organisation - S.S.R.O</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SSRO.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-inner">
+            <!-- Left: Logo -->
+            <div class="logo-area">
+                <img src="image.png" 
+                alt="SSRO logo">
+            </div>
+
+            <!-- Center: Title -->
+            <div class="title-area">
+                <h1 class="site-title-desktop">
+                    Space Science Research Organisation
+                </h1>
+                <h1 class="site-title-mobile">
+                    Space Science Research Organizations
+                </h1>
+                <div class="site-subtitle">S.S.R.O</div>
+            </div>
+
+            <!-- Right: Login / Register (desktop) | People icon (mobile) -->
+            <div class="auth-area">
+                <button class="auth-btn desktop-auth-btn" id="openAuthBtn">
+                    Login / Register
+                </button>
+                <button class="auth-icon-btn mobile-auth-btn" id="openAuthBtnMobile" aria-label="Login/Register">
+                    <span class="auth-icon">&#128101;</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login / Register Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-overlay" id="authOverlay"></div>
+        <div class="auth-modal-content">
+            <button class="auth-close-btn" id="authCloseBtn">&times;</button>
+
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="registerTabBtn">Register</button>
+                <button class="auth-tab-btn" id="loginTabBtn">Login</button>
+            </div>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form active">
+                <h2>Create Account</h2>
+                <label>
+                    Name
+                    <input type="text" id="regName" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" id="regEmail" required>
+                </label>
+                <label>
+                    Create Password
+                    <input type="password" id="regPassword" required>
+                </label>
+                <label>
+                    Qualification
+                    <input type="text" id="regQualification" placeholder="9th, 10th, 11th, 12th, B.Tech, etc." required>
+                </label>
+                <button type="submit" class="primary-btn">Register</button>
+                <p class="switch-text">
+                    Already have an account?
+                    <span id="switchToLogin" class="switch-link">Login here</span>
+                </p>
+            </form>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <h2>Login</h2>
+
+                <!-- Continue with Google (front-end dummy button) -->
+                <button type="button" class="google-btn" id="googleLoginBtn">
+                    <span class="google-icon">G</span>
+                    Continue with Google
+                </button>
+
+                <div class="or-separator">
+                    <span>OR</span>
+                </div>
+
+                <label>
+                    Email
+                    <input type="email" id="loginEmail" required>
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="loginPassword" required>
+                </label>
+                <button type="submit" class="primary-btn">Login</button>
+                <p class="switch-text">
+                    New user?
+                    <span id="switchToRegister" class="switch-link">Create account</span>
+                </p>
+            </form>
+
+            <p class="auth-status" id="authStatus"></p>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profileModal">
+        <div class="profile-modal-overlay" id="profileOverlay"></div>
+        <div class="profile-modal-content">
+            <button class="profile-close-btn" id="profileCloseBtn">&times;</button>
+            <h2>Your Profile</h2>
+            <div id="profileInfo">
+                <!-- JS se fill hoga -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <ul class="nav-links">
+                <li class="nav-item dropdown">
+                    <button class="nav-link">Home</button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-link" data-section="profile-view" id="profileViewBtn">Profile</button></li>
+                        <li><button class="dropdown-link" data-section="saved-section">Save</button></li>
+                        <li><button class="dropdown-link" data-section="downloaded-section">Download</button></li>
+                        <li><button class="dropdown-link" data-section="observation">Observation</button></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <button class="nav-link">Astronomy</button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-link" data-section="universe">Universe</button></li>
+                        <li><button class="dropdown-link" data-section="galaxy">Galaxy</button></li>
+                        <li><button class="dropdown-link" data-section="star">Star</button></li>
+                        <li><button class="dropdown-link" data-section="solar-system">Solar System</button></li>
+                        <li><button class="dropdown-link" data-section="astro-more">More</button></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <button class="nav-link">School</button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-link" data-section="class9">9th</button></li>
+                        <li><button class="dropdown-link" data-section="class10">10th</button></li>
+                        <li><button class="dropdown-link" data-section="class11">11th</button></li>
+                        <li><button class="dropdown-link" data-section="class12">12th</button></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <button class="nav-link">Science</button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-link" data-section="math">Math</button></li>
+                        <li><button class="dropdown-link" data-section="physics">Physics</button></li>
+                        <li><button class="dropdown-link" data-section="chemistry">Chemistry</button></li>
+                        <li><button class="dropdown-link" data-section="experiments">Experiments</button></li>
+                        <li><button class="dropdown-link" data-section="science-more">More</button></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <button class="nav-link">News</button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-link" data-section="isro">ISRO</button></li>
+                        <li><button class="dropdown-link" data-section="nasa">NASA</button></li>
+                        <li><button class="dropdown-link" data-section="other-news">Other</button></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Mobile: only search icon in navbar -->
+            <button id="searchIconMobile" class="search-icon-mobile" aria-label="Search">
+                🔍
+            </button>
+        </div>
+    </nav>
+
+    <!-- NAVBAR KE JUST NICHE SEARCH BAR STRIP -->
+    <div class="nav-search-bar">
+        <div class="nav-search">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button id="searchBtn" class="search-btn">🔍</button>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <main class="content-wrapper">
+        <section class="content-grid">
+            <!-- Left Column / Single Column on mobile -->
+            <div class="content-column">
+                <article class="content-card" data-section="galaxy">
+                <div class="content-title">SPRIAL GALAXY</div>
+                    <div class="content-image">
+                        
+                <img src="galaxy.jpg" alt="galaxy">
+                        <span class="content-title">Spiral Galaxy</span>
+                    </div>
+                    <div class="content-body">
+                        <p>
+                            Galaxies are huge systems of stars, gas, dust, and dark matter bound together by gravity.
+                            This section will show detailed posts about different types of galaxies and observations.
+                        </p>
+                        <div class="content-actions">
+                            <button class="secondary-btn save-btn" data-content-id="galaxy-1">
+                                Save
+                            </button>
+                            <button class="secondary-btn download-btn" data-content-id="galaxy-1">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="content-card" data-section="universe">
+                <div class="content-title">COSMOS</div>
+                    <div class="content-image">
+                        
+                <img src="cosmos.jpg" alt="cosmos">
+                        <span class="content-title">Universe Overview</span>
+                    </div>
+                    <div class="content-body">
+                        <p>
+                            Explore structure of the observable universe, large-scale cosmic web, and fundamental concepts
+                            like dark energy and cosmic expansion for SSRO students.
+                        </p>
+                        <div class="content-actions">
+                            <button class="secondary-btn save-btn" data-content-id="universe-1">
+                                Save
+                            </button>
+                            <button class="secondary-btn download-btn" data-content-id="universe-1">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Saved Content Section (simple list) -->
+                <article class="content-card" data-section="saved-section">
+                    <div class="content-image">
+                        <span class="content-title">Saved Contents</span>
+                    </div>
+                    <div class="content-body">
+                        <ul id="savedList" class="saved-list">
+                            <!-- JS se populate -->
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right Column (desktop only) -->
+            <div class="content-column desktop-only">
+                <article class="content-card" data-section="solar-system">
+                <div class="content-title">SOLAR SYSTEM</div>
+                    <div class="content-image">
+                        
+                <img src="solar.jpg" alt="Solar system">
+                        <span class="content-title">Solar System Basics</span>
+                    </div>
+                    <div class="content-body">
+                        <p>
+                            Learn about planets, moons, asteroids, and comets with clear notes designed for classes 9–12
+                            and beginners in space science research.
+                        </p>
+                        <div class="content-actions">
+                            <button class="secondary-btn save-btn" data-content-id="solar-1">
+                                Save
+                            </button>
+                            <button class="secondary-btn download-btn" data-content-id="solar-1">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="content-card" data-section="isro">
+              <div class="content-title">ISRO Missions</div>
+                    <div class="content-image">
+                        
+                <img src="irso.jpg" alt="isro mission">
+                        <span class="content-title">ISRO Missions</span>
+                    </div>
+                    <div class="content-body">
+                        <p>
+                            This area will show updates and study material related to ISRO missions, launch vehicles,
+                            and scientific payloads for student projects.
+                        </p>
+                        <div class="content-actions">
+                            <button class="secondary-btn save-btn" data-content-id="isro-1">
+                                Save
+                            </button>
+                            <button class="secondary-btn download-btn" data-content-id="isro-1">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Downloaded Content Section -->
+                <article class="content-card" data-section="downloaded-section">
+                    <div class="content-image">
+                        <span class="content-title">Downloaded Contents</span>
+                    </div>
+                    <div class="content-body">
+                        <ul id="downloadedList" class="saved-list">
+                            <!-- JS se populate -->
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <!-- Left -->
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Phone: <span id="contactNumber">+91-7323014197</span></p>
+                <p>
+                    Instagram:
+                    <a href="https://instagram.com/" target="_blank" id="instaLink">
+                        @your_instagram_id
+                    </a>
+                    youtube 
+               :
+                  <a href="https://youtube.com/@chandanprajapati-m5p?si=Xjz1Suphv2wCaCNa" target="_blank" id="youtube link">
+                @ChandanPrajapati-m5p
+                  </a>
+                </p>
+
+            </div>
+
+            <!-- Center -->
+            <div class="footer-column footer-center">
+                <p class="footer-created">Create by <strong>Chandan Prajapati</strong></p>
+                <div class="logo-text">Astronomer</div>
+            
+                
+            </div>
+
+            <!-- Right -->
+            <div class="footer-column footer-right">
+                <p class="footer-note">
+                    Note:“This website is created to explore space science through research, data, and learning.
+It aims to inspire curiosity and share knowledge about the universe with everyone.”
+                </p>
+                <form id="feedbackForm" class="feedback-form">
+                    <label for="feedbackText">Your Feedback</label>
+                    <textarea id="feedbackText" rows="3" placeholder="Write your feedback..."></textarea>
+                    <button type="submit" class="primary-btn">Submit Feedback</button>
+                    <p class="feedback-status" id="feedbackStatus"></p>
+                </form>
+            </div>
+        </div>
+    </footer>
+<script src="SSRO.js" ></script>
+</body>
+</html>
