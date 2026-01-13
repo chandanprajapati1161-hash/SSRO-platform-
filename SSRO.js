@@ -537,3 +537,8 @@ if (feedbackForm) {
 /* Initial render of saved/downloaded on page load */
 
 renderSavedAndDownloaded();
+
+const API_BASE =
+  window.location.origin.indexOf('localhost') !== -1
+    ? 'http://localhost:3000'
+    : 'https://vercel.com/chandanprajapati1161-hashs-projects/space-science-research-org-backend-fcdw';
